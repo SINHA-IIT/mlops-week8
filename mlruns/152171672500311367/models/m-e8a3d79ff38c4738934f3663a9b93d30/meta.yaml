@@ -1,0 +1,10 @@
+artifact_location: file:///home/sinhaabhinashkumar/wk2/mlruns/152171672500311367/models/m-e8a3d79ff38c4738934f3663a9b93d30/artifacts
+creation_timestamp: 1763046269696
+experiment_id: '152171672500311367'
+last_updated_timestamp: 1763046273797
+model_id: m-e8a3d79ff38c4738934f3663a9b93d30
+model_type: null
+name: decision_tree_model
+source_run_id: a7b5bcbc3a0243d2ad3d450bd867d0fc
+status: 2
+status_message: null
