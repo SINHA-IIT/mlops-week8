@@ -35,7 +35,6 @@ jobs:
       - name: Run Poisoning + Train + Eval
         run: |
           export MLFLOW_TRACKING_URI="file:./mlruns"
-          export MLFLOW_ARTIFACT_URI="./mlruns"
           
           for P in 0.05 0.10 0.50
           do
