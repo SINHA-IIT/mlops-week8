@@ -1,0 +1,69 @@
+name: CI pipeline
+
+on:
+  workflow_dispatch:
+
+permissions: 
+  contents: write
+  pull-requests: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
+
+      - name: Install pytest
+        run: pip install pytest
+
+      - name: Create report header
+        run: echo "# IRIS Data Poisoning Report" > report.md
+
+      # ------------------------------------------------------
+      # RUN 3 POISONING LEVELS: 5%, 10%, 50%
+      # ------------------------------------------------------
+      - name: Run Poisoning + Train + Eval
+        run: |
+          for P in 0.05 0.10 0.50
+          do
+            echo "## Poisoning Level: $P" | tee -a report.md
+            python poison_data.py $P
+
+            echo "### Training with poison level $P..." | tee -a report.md
+            POISON_LEVEL=$P python train.py
+
+            echo "### Evaluation..." | tee -a report.md
+            python evaluate.py
+
+            echo "### Metrics" >> report.md
+            cat metrics.csv >> report.md
+            echo "" >> report.md
+          done
+
+      # ------------------------------------------------------
+      # RUN CLEAN MODEL FOR COMPARISON
+      # ------------------------------------------------------
+      - name: Train & evaluate clean model
+        run: |
+          echo "## Clean Model (No Poisoning)" >> report.md
+          rm -f data/data_iris_poisoned.csv
+          python train.py
+          python evaluate.py
+          echo "### Metrics" >> report.md
+          cat metrics.csv >> report.md
+
+      - name: Print final report
+        run: cat report.md
+
+      - name: Copy report.md to report.txt
+        run: cp report.md report.txt

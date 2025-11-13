@@ -1,0 +1,14 @@
+artifact_uri: file:///home/sinhaabhinashkumar/wk2/mlruns/152171672500311367/685de64b76624dfab16cea88cd62b859/artifacts
+end_time: 1763042992638
+entry_point_name: ''
+experiment_id: '152171672500311367'
+lifecycle_stage: active
+run_id: 685de64b76624dfab16cea88cd62b859
+run_name: feature_poison_punknown
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763042988379
+status: 3
+tags: []
+user_id: sinhaabhinashkumar

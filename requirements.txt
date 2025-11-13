@@ -1,6 +1,6 @@
-scikit-learn
 pandas
+scikit-learn
 joblib
-pytest
+pytz
+python-dateutil
 dvc
-cml

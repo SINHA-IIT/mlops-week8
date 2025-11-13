@@ -1,0 +1,14 @@
+artifact_uri: file:///home/sinhaabhinashkumar/wk2/mlruns/152171672500311367/fa7932306024404e9bef8831aa0d31ce/artifacts
+end_time: 1763042848864
+entry_point_name: ''
+experiment_id: '152171672500311367'
+lifecycle_stage: active
+run_id: fa7932306024404e9bef8831aa0d31ce
+run_name: clean_data_model
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763042844621
+status: 3
+tags: []
+user_id: sinhaabhinashkumar
