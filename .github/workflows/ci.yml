@@ -34,7 +34,10 @@ jobs:
       # ------------------------------------------------------
       - name: Run Poisoning + Train + Eval
         run: |
-          export MLFLOW_TRACKING_URI="file: ./mlruns"   # <=== FIX
+          export MLFLOW_TRACKING_URI="file:./mlruns"
+          export MLFLOW_ARTIFACT_URI="./mlruns"
+          mkdir -p mlruns
+
           for P in 0.05 0.10 0.50
           do
             echo "## Poisoning Level: $P" | tee -a report.md
